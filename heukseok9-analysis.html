@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>흑석 9구역 · 디에이치 켄트로나인 — 30평대 시세 추정 2026—2029</title>
+<meta name="description" content="흑석 9구역(디에이치 켄트로나인) 전용 84㎡ 매매가 추정 시나리오 분석 (2026 Q2 — 2029 Q4)." />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link
+  rel="stylesheet"
+  as="style"
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+/>
+<link
+  rel="stylesheet"
+  as="style"
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+/>
+<style>
+  /* ============================================================
+   *  변수 — 한강의 새벽, 매트 골드
+   * ============================================================ */
+  :root {
+    --bg-deep: #0a0d14;
+    --bg-mid: #0f1421;
+    --bg-elev: #151b2a;
+    --bg-card: rgba(22, 28, 45, 0.55);
+
+    --ink: #f2eee5;
+    --ink-soft: #b5ae9f;
+    --ink-mute: #76705f;
+    --ink-faint: #3d3a32;
+
+    --gold: #c9a961;
+    --gold-warm: #d9b06b;
+    --gold-pale: #ebd9a8;
+    --river: #6b92b0;
+    --river-pale: #9bb9d2;
+
+    --scen-upper: #d9a45b;
+    --scen-base: #ece2c1;
+    --scen-lower: #7d96ad;
+
+    --milestone-sale: #d96a5e;
+    --milestone-move: #6fb28a;
+
+    --grid-line: rgba(242, 238, 229, 0.06);
+    --grid-line-strong: rgba(242, 238, 229, 0.12);
+    --rule: rgba(242, 238, 229, 0.1);
+
+    --r-sm: 4px;
+    --r-md: 10px;
+    --r-lg: 20px;
+
+    --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    --serif: var(--sans);
+    --mono: var(--sans);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg-deep); }
+  em, i, address, cite, var, dfn { font-style: normal; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    word-break: keep-all;
+    line-break: strict;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  ::selection { background: var(--gold); color: var(--bg-deep); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-deep); }
+  ::-webkit-scrollbar-thumb { background: #2a3142; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a435a; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ============================================================
+   *  배경 — 그라데이션 메쉬 + 캔버스 파티클 + 그레인
+   * ============================================================ */
+  .bg-mesh {
+    position: fixed; inset: -10%;
+    z-index: -10;
+    background:
+      radial-gradient(60vw 50vh at 18% 22%, rgba(201, 169, 97, 0.16), transparent 60%),
+      radial-gradient(70vw 60vh at 82% 78%, rgba(107, 146, 176, 0.18), transparent 60%),
+      radial-gradient(55vw 55vh at 65% 12%, rgba(155, 185, 210, 0.10), transparent 55%),
+      radial-gradient(50vw 60vh at 10% 80%, rgba(217, 164, 91, 0.08), transparent 55%),
+      linear-gradient(180deg, #0a0d14 0%, #0b0f19 60%, #0a0d14 100%);
+    filter: blur(40px) saturate(115%);
+    animation: meshDrift 32s ease-in-out infinite alternate;
+    will-change: transform, filter;
+  }
+  @keyframes meshDrift {
+    0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%  { transform: translate3d(-3%, 2%, 0) scale(1.05) rotate(-1deg); }
+    100% { transform: translate3d(3%, -2%, 0) scale(1.08) rotate(1deg); }
+  }
+
+  #bg-canvas {
+    position: fixed; inset: 0;
+    z-index: -8;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .bg-grain {
+    position: fixed; inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.93  0 0 0 0 0.89  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 240px 240px;
+  }
+
+  .bg-vignette {
+    position: fixed; inset: 0;
+    z-index: -4;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(0,0,0,0.5) 100%);
+  }
+
+  /* ============================================================
+   *  레이아웃
+   * ============================================================ */
+  .shell {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+
+  /* ============================================================
+   *  Navigation
+   * ============================================================ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10, 13, 20, 0.45);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .brand-mark {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .brand-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .nav-meta {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-meta .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-right: 6px;
+    box-shadow: 0 0 8px rgba(201,169,97,0.6);
+    animation: livePulse 2.4s ease-in-out infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  @media (max-width: 720px) {
+    .nav-meta span:not(.live) { display: none; }
+  }
+
+  /* ============================================================
+   *  Hero
+   * ============================================================ */
+  .hero {
+    padding: clamp(60px, 12vh, 140px) 0 clamp(40px, 8vh, 80px);
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vh, 70px);
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kicker::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 .em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--gold-pale);
+  }
+  .hero h1 .brk { display: block; }
+  .hero .lede {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.6vw, 22px);
+    color: var(--ink-soft);
+    max-width: 720px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .hero .lede em {
+    font-style: normal;
+    color: var(--gold-pale);
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-top: clamp(40px, 6vh, 70px);
+  }
+  @media (max-width: 820px) {
+    .hero-metrics { grid-template-columns: 1fr 1fr; }
+    .hero-metrics .metric:nth-child(2) { border-right: 0; }
+  }
+  @media (max-width: 480px) {
+    .hero-metrics { grid-template-columns: 1fr; }
+    .hero-metrics .metric { border-right: 0 !important; }
+  }
+  .metric {
+    padding: 26px 24px 24px 0;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .metric:last-child { border-right: 0; }
+  .metric .m-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .metric .m-label .m-num {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .metric .m-value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96;
+    font-weight: 300;
+    font-size: clamp(34px, 4vw, 50px);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .metric .m-value .num {
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+  .metric .m-value .unit {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.36em;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .metric .m-value .arrow {
+    font-family: var(--mono);
+    font-size: 0.28em;
+    color: var(--gold);
+    margin-left: 4px;
+    transform: translateY(-0.4em);
+  }
+  .metric .m-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ============================================================
+   *  Section header — 공통
+   * ============================================================ */
+  section.block {
+    padding: clamp(60px, 10vh, 110px) 0;
+    position: relative;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: clamp(40px, 6vh, 60px);
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (max-width: 640px) {
+    .section-head { grid-template-columns: 60px 1fr; gap: 16px; }
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(28px, 3vw, 42px);
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 6px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+    font-size: clamp(28px, 3.6vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .section-head h2 em {
+    font-style: normal;
+    color: var(--gold-pale);
+  }
+  .section-head .sub {
+    font-family: var(--serif);
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 680px;
+    line-height: 1.55;
+  }
+
+  /* ============================================================
+   *  단지 개요
+   * ============================================================ */
+  .complex-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(28px, 4vw, 56px);
+    align-items: stretch;
+  }
+  @media (max-width: 920px) {
+    .complex-grid { grid-template-columns: 1fr; }
+  }
+
+  .complex-spec {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .spec-cell {
+    padding: 22px 22px 22px 0;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-top: 0; padding-top: 0; }
+  @media (max-width: 540px) { .complex-spec { grid-template-columns: 1fr; } .spec-cell:nth-child(2) { border-top: 1px solid var(--rule); padding-top: 22px; } }
+  .spec-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .spec-value {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(20px, 1.8vw, 24px);
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .spec-value .accent { color: var(--gold-pale); font-style: normal; }
+  .spec-value .small { font-size: 0.65em; color: var(--ink-soft); margin-left: 4px; }
+
+  .complex-blurb {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: clamp(28px, 3vw, 40px);
+    position: relative;
+    overflow: hidden;
+  }
+  .complex-blurb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 0% 0%, rgba(201,169,97,0.10), transparent 50%);
+    pointer-events: none;
+  }
+  .complex-blurb-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .complex-blurb p {
+    font-family: var(--serif);
+    font-size: clamp(15px, 1.3vw, 18px);
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-weight: 300;
+    position: relative;
+  }
+  .complex-blurb p + p { margin-top: 14px; }
+  .complex-blurb em { font-style: normal; color: var(--gold-pale); }
+  .complex-blurb strong { font-weight: 500; color: var(--ink); }
+
+  /* ============================================================
+   *  타임라인 — 인터랙티브 마일스톤
+   * ============================================================ */
+  .timeline {
+    position: relative;
+    padding: 36px 0 20px;
+  }
+  .timeline-track {
+    position: relative;
+    height: 2px;
+    background: var(--rule);
+    margin: 30px clamp(20px, 3vw, 40px);
+    border-radius: 2px;
+  }
+  .timeline-track::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-warm));
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(201,169,97,0.5);
+    animation: progressGlow 4s ease-in-out infinite alternate;
+  }
+  @keyframes progressGlow {
+    0% { box-shadow: 0 0 6px rgba(201,169,97,0.3); }
+    100% { box-shadow: 0 0 18px rgba(201,169,97,0.7); }
+  }
+
+  .milestones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 0;
+  }
+  @media (max-width: 820px) {
+    .milestones { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+
+  .milestone {
+    cursor: pointer;
+    padding: 30px 18px 0 18px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .milestone:hover { transform: translateY(-4px); }
+  .milestone .ms-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg-deep);
+    border: 2px solid var(--ink-mute);
+    margin: -36px auto 18px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .milestone.is-passed .ms-dot,
+  .milestone.is-current .ms-dot {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201,169,97,0.15);
+  }
+  .milestone.is-current .ms-dot {
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(201,169,97,0.20); }
+    50% { box-shadow: 0 0 0 10px rgba(201,169,97,0.05); }
+  }
+  .milestone .ms-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .milestone.is-current .ms-date,
+  .milestone.is-passed .ms-date { color: var(--gold); }
+  .milestone .ms-title {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .milestone .ms-meta {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 300;
+  }
+
+  /* ============================================================
+   *  차트 섹션
+   * ============================================================ */
+  .chart-shell {
+    background: var(--bg-card);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: clamp(24px, 3vw, 40px);
+    position: relative;
+    overflow: hidden;
+  }
+  .chart-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(50vw 30vh at 10% -10%, rgba(201,169,97,0.06), transparent 60%),
+      radial-gradient(50vw 30vh at 100% 110%, rgba(107,146,176,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .chart-title {
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.8vw, 24px);
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .chart-title em { font-style: normal; color: var(--gold-pale); }
+  .chart-subtitle {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .chart-toggles {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .toggle {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-mute);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toggle .swatch {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .toggle[data-scen="upper"].on { color: var(--scen-upper); border-color: rgba(217,164,91,0.4); background: rgba(217,164,91,0.06); }
+  .toggle[data-scen="base"].on  { color: var(--scen-base);  border-color: rgba(236,226,193,0.45); background: rgba(236,226,193,0.06); }
+  .toggle[data-scen="lower"].on { color: var(--scen-lower); border-color: rgba(125,150,173,0.4); background: rgba(125,150,173,0.06); }
+  .toggle:not(.on) { opacity: 0.45; }
+  .toggle:hover { opacity: 1; }
+
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .chart-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 760px;
+  }
+  .chart-grid line { stroke: var(--grid-line); stroke-width: 1; }
+  .chart-grid line.axis { stroke: var(--grid-line-strong); }
+  .chart-grid text {
+    font-family: var(--mono);
+    font-size: 10px;
+    fill: var(--ink-mute);
+    letter-spacing: 0.08em;
+  }
+  .chart-stage-bg rect.stage-1 { fill: rgba(217, 164, 91, 0.025); }
+  .chart-stage-bg rect.stage-2 { fill: rgba(155, 185, 210, 0.03); }
+  .chart-stage-bg rect.stage-3 { fill: rgba(111, 178, 138, 0.03); }
+  .chart-stage-bg text {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .range-area { fill: rgba(201,169,97,0.05); stroke: none; }
+
+  .line { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .line.upper { stroke: var(--scen-upper); stroke-dasharray: 4 4; }
+  .line.base  { stroke: var(--scen-base); stroke-width: 2.4; }
+  .line.lower { stroke: var(--scen-lower); stroke-dasharray: 4 4; }
+
+  .line.draw {
+    stroke-dashoffset: var(--len, 0);
+    animation: drawLine 1.6s ease-out forwards;
+  }
+  @keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+  .points circle {
+    fill: var(--bg-deep);
+    stroke-width: 1.5;
+    opacity: 0;
+    transition: opacity 0.2s ease, r 0.2s ease;
+  }
+  .points circle.upper { stroke: var(--scen-upper); }
+  .points circle.base  { stroke: var(--scen-base); }
+  .points circle.lower { stroke: var(--scen-lower); }
+  .points circle.is-active { opacity: 1; r: 5; }
+
+  .ref-line line { stroke: var(--ink-mute); stroke-dasharray: 2 4; stroke-width: 1; }
+  .ref-line text {
+    font-family: var(--mono);
+    font-size: 10px;
+    fill: var(--ink-soft);
+    letter-spacing: 0.1em;
+  }
+
+  .milestone-line line { stroke-width: 1; stroke-dasharray: 3 3; }
+  .milestone-line.sale line { stroke: var(--milestone-sale); }
+  .milestone-line.move line { stroke: var(--milestone-move); }
+  .milestone-line text {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .milestone-line.sale text { fill: var(--milestone-sale); }
+  .milestone-line.move text { fill: var(--milestone-move); }
+
+  .hover-guide {
+    stroke: var(--ink-soft);
+    stroke-width: 1;
+    stroke-dasharray: 2 3;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .hover-guide.show { opacity: 0.6; }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(15, 20, 33, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gold);
+    border-radius: var(--r-md);
+    padding: 14px 18px;
+    min-width: 200px;
+    opacity: 0;
+    transform: translate(-50%, -120%);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 10;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,169,97,0.2);
+  }
+  .tooltip.show { opacity: 1; }
+  .tip-quarter {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .tip-phase {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: normal;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+  .tip-row:last-child { margin-bottom: 0; }
+  .tip-row .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tip-row .label .swatch {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+  .tip-row .label.upper .swatch { background: var(--scen-upper); }
+  .tip-row .label.base  .swatch { background: var(--scen-base); }
+  .tip-row .label.lower .swatch { background: var(--scen-lower); }
+  .tip-row .val {
+    font-family: var(--serif);
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .tip-row .val .unit { font-size: 11px; color: var(--ink-soft); font-family: var(--sans); font-weight: 300; margin-left: 2px; }
+
+  .chart-caption {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    margin-top: 18px;
+    line-height: 1.6;
+    text-transform: none;
+  }
+  .chart-caption strong { color: var(--ink-soft); font-weight: 500; }
+
+  /* ============================================================
+   *  시나리오 카드 그리드
+   * ============================================================ */
+  .scen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2vw, 28px);
+  }
+  @media (max-width: 920px) { .scen-grid { grid-template-columns: 1fr; } }
+
+  .scen-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    padding: clamp(26px, 2.6vw, 36px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+  }
+  .scen-card:hover { transform: translateY(-4px); }
+  .scen-card.upper:hover { border-color: rgba(217,164,91,0.4); }
+  .scen-card.base:hover  { border-color: rgba(236,226,193,0.4); }
+  .scen-card.lower:hover { border-color: rgba(125,150,173,0.4); }
+  .scen-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .scen-card.upper { color: var(--scen-upper); }
+  .scen-card.base  { color: var(--scen-base); }
+  .scen-card.lower { color: var(--scen-lower); }
+
+  .scen-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: inherit;
+  }
+  .scen-name {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .scen-name em { font-style: normal; color: inherit; }
+  .scen-thesis {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 300;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--rule);
+    min-height: 70px;
+  }
+  .scen-end {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .scen-end .lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-right: 4px;
+    margin-bottom: 14px;
+  }
+  .scen-end .big {
+    font-family: var(--serif);
+    font-feature-settings: "tnum" 1;
+    font-weight: 300;
+    font-size: clamp(40px, 4.5vw, 60px);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+  }
+  .scen-end .unit {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+
+  .scen-range {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .range-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+  }
+  .range-row:first-child { border-top: 0; padding-top: 0; }
+  .range-row .v {
+    font-family: var(--serif);
+    font-feature-settings: "tnum" 1;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: 0;
+  }
+
+  /* ============================================================
+   *  리스크
+   * ============================================================ */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .risk-grid { grid-template-columns: 1fr; } }
+  .risk-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 26px 28px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 20px;
+    align-items: start;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .risk-card:hover {
+    border-color: rgba(217,106,94,0.3);
+    transform: translateX(4px);
+  }
+  .risk-num {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 300;
+    font-size: 34px;
+    color: var(--milestone-sale);
+    line-height: 1;
+  }
+  .risk-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .risk-desc {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ============================================================
+   *  Sources & 한계
+   * ============================================================ */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(28px, 4vw, 56px);
+  }
+  @media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr; } }
+
+  .limits {
+    background: rgba(217, 106, 94, 0.06);
+    border: 1px solid rgba(217, 106, 94, 0.25);
+    border-radius: var(--r-md);
+    padding: 26px 30px;
+  }
+  .limits .l-head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--milestone-sale);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .limits .l-head::before { content: "△"; font-size: 14px; }
+  .limits p {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .limits p + p { margin-top: 10px; }
+  .limits em { font-style: normal; color: var(--gold-pale); }
+
+  .src-head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .src-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .src-list li {
+    border-top: 1px solid var(--rule);
+    padding: 14px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    transition: color 0.2s ease;
+  }
+  .src-list li:first-child { border-top: 0; }
+  .src-list li:hover { color: var(--gold-pale); }
+  .src-list .src-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    width: 28px;
+    flex-shrink: 0;
+  }
+  .src-list a {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-weight: 300;
+    transition: color 0.2s ease;
+  }
+  .src-list li:hover a { color: var(--gold-pale); }
+  .src-list .arrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-left: auto;
+  }
+
+  /* ============================================================
+   *  Footer
+   * ============================================================ */
+  footer {
+    padding: 60px 0 50px;
+    border-top: 1px solid var(--rule);
+    margin-top: clamp(40px, 6vh, 80px);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .foot-brand {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--gold);
+  }
+  .foot-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.8;
+    text-align: right;
+  }
+  @media (max-width: 540px) { .foot-meta { text-align: left; } }
+
+  /* ============================================================
+   *  스크롤 reveal
+   * ============================================================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal[data-d="1"] { transition-delay: 0.08s; }
+  .reveal[data-d="2"] { transition-delay: 0.16s; }
+  .reveal[data-d="3"] { transition-delay: 0.24s; }
+  .reveal[data-d="4"] { transition-delay: 0.32s; }
+  .reveal[data-d="5"] { transition-delay: 0.40s; }
+  .reveal[data-d="6"] { transition-delay: 0.48s; }
+
+  /* ============================================================
+   *  Reduced motion
+   * ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="bg-grain"></div>
+<div class="bg-vignette"></div>
+
+<!-- ============================================================ NAV -->
+<header class="nav">
+  <div class="shell nav-inner">
+    <div class="brand">
+      <span class="brand-mark">Heukseok IX</span>
+      <span class="brand-meta">Premium Real Estate Intelligence</span>
+    </div>
+    <div class="nav-meta">
+      <span class="live"><span class="dot"></span>2026 · Q2</span>
+      <span>최종 갱신 · 05.13</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ HERO -->
+<section class="hero shell">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker reveal">동작구 흑석동 · 정비사업 1540세대</div>
+      <h1 class="reveal" data-d="1">
+        흑석 9구역<span class="brk"></span>
+        <span class="em">디에이치 켄트로나인</span>
+      </h1>
+      <p class="lede reveal" data-d="2">
+        전용 <em>84㎡</em>(30평대) 매매 시세 추정 — 2026 Q2 부터 2029 Q4 까지의
+        분기별 시나리오. 단정적 가격이 아닌, <em>의사결정의 출발점</em>으로
+        해석할 것.
+      </p>
+    </div>
+
+    <div class="hero-metrics reveal" data-d="3">
+      <div class="metric">
+        <div class="m-label"><span class="m-num">01</span>현재 단계</div>
+        <div class="m-value">착공<span class="unit">/ 2026.04</span></div>
+        <div class="m-sub">터파기 진행 중</div>
+      </div>
+      <div class="metric">
+        <div class="m-label"><span class="m-num">02</span>일반분양 · 84㎡</div>
+        <div class="m-value"><span class="num">≈ 20</span><span class="unit">억</span></div>
+        <div class="m-sub">2027 H2 예정</div>
+      </div>
+      <div class="metric">
+        <div class="m-label"><span class="m-num">03</span>베이스 · 29 Q4</div>
+        <div class="m-value"><span class="num" data-count="36.5">0.0</span><span class="unit">억</span><span class="arrow">↗</span></div>
+        <div class="m-sub">베이스 시나리오 종점</div>
+      </div>
+      <div class="metric">
+        <div class="m-label"><span class="m-num">04</span>추정 범위</div>
+        <div class="m-value"><span class="num" data-count="31.5">0.0</span> – <span class="num" data-count="44.0">0.0</span></div>
+        <div class="m-sub">하방 — 상방 · 29 Q4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 01 단지 -->
+<section class="block shell" id="complex">
+  <div class="section-head reveal">
+    <div class="section-num">01</div>
+    <div>
+      <h2>단지 <em>개요</em></h2>
+      <p class="sub">한강 조망과 9호선 급행 접근성을 갖춘 한강벨트 정비사업.
+        흑석뉴타운의 마지막 대형 단지로 평가되며, 사업 단계는 가격 결정 메커니즘을 단계별로 바꾼다.</p>
+    </div>
+  </div>
+
+  <div class="complex-grid">
+    <div class="complex-spec reveal" data-d="1">
+      <div class="spec-cell">
+        <div class="spec-label">단지명</div>
+        <div class="spec-value"><span class="accent">디에이치 켄트로나인</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">시공</div>
+        <div class="spec-value">현대건설</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">세대수</div>
+        <div class="spec-value">1,540<span class="small">세대</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">규모</div>
+        <div class="spec-value">최고 25층<span class="small">/ 21개동</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">착공</div>
+        <div class="spec-value">2026 · 04</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">일반분양</div>
+        <div class="spec-value">2027 H2<span class="small">예정</span></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">입주 예상</div>
+        <div class="spec-value">2029 H2 <span class="accent">—</span> 2030</div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-label">분양 예상가 · 84㎡</div>
+        <div class="spec-value">약 <span class="accent">20억</span></div>
+      </div>
+    </div>
+
+    <aside class="complex-blurb reveal" data-d="2">
+      <div class="complex-blurb-label">시장 맥락</div>
+      <p>
+        2026년 서울 입주물량은 전년 대비 <strong>-32%</strong>, 2027년은
+        <strong>1만 가구 수준</strong>까지 축소될 것으로 예상된다.
+        공급 절벽 구간에 한강벨트 신축 선호가 겹치면서, 인근
+        <em>아크로리버하임·흑석자이</em> 84㎡는 24~26억 선에서 거래되고 있다.
+      </p>
+      <p>
+        흑석 9구역은 분양 전 단계에서 입주권 기준 25~28억 수준의 호가가 형성되어
+        있다. 본 추정은 <em>입주권 → 분양권 → 신축</em>으로의 단계 전환에 따른
+        가격 발견 과정을 반영한다.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================ 02 타임라인 -->
+<section class="block shell" id="timeline">
+  <div class="section-head reveal">
+    <div class="section-num">02</div>
+    <div>
+      <h2>사업 <em>타임라인</em></h2>
+      <p class="sub">정비사업 진행 단계는 일반적으로 1~2년의 변동성을 보인다. 일정 지연 시
+        분양·입주 시점도 후행 변동한다.</p>
+    </div>
+  </div>
+
+  <div class="timeline reveal" data-d="1">
+    <div class="timeline-track"></div>
+    <div class="milestones">
+      <div class="milestone is-passed" data-q="0">
+        <div class="ms-dot"></div>
+        <div class="ms-date">2026 · 04</div>
+        <div class="ms-title">착공</div>
+        <div class="ms-meta">현재 단계 · 터파기 진행 중</div>
+      </div>
+      <div class="milestone is-current" data-q="4">
+        <div class="ms-dot"></div>
+        <div class="ms-date">2027 · H2</div>
+        <div class="ms-title">일반분양</div>
+        <div class="ms-meta">84㎡ ≈ 20억 · 평당 5,800~6,500만원</div>
+      </div>
+      <div class="milestone" data-q="9">
+        <div class="ms-dot"></div>
+        <div class="ms-date">2028 · H2</div>
+        <div class="ms-title">분양권 거래기</div>
+        <div class="ms-meta">프리미엄 반영 본격화</div>
+      </div>
+      <div class="milestone" data-q="13">
+        <div class="ms-dot"></div>
+        <div class="ms-date">2029 · H2</div>
+        <div class="ms-title">입주 예상</div>
+        <div class="ms-meta">신축 거래 시작 · 2030 연장 가능</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 03 차트 -->
+<section class="block shell" id="chart">
+  <div class="section-head reveal">
+    <div class="section-num">03</div>
+    <div>
+      <h2>분기별 <em>시세 추정</em> · 2026 Q2 — 2029 Q4</h2>
+      <p class="sub">베이스 / 상방 / 하방 시나리오. 데이터 포인트에 마우스를 올리면 분기별 추정값이 표시된다.
+        범례 토글로 시나리오를 보거나 숨길 수 있다.</p>
+    </div>
+  </div>
+
+  <div class="chart-shell reveal" data-d="1">
+    <div class="chart-head">
+      <div>
+        <div class="chart-title">디에이치 켄트로나인 <em>전용 84㎡</em></div>
+        <div class="chart-subtitle">시나리오 3종 · 단위 억원</div>
+      </div>
+      <div class="chart-toggles" id="toggles">
+        <button class="toggle on" data-scen="upper"><span class="swatch"></span>상방</button>
+        <button class="toggle on" data-scen="base"><span class="swatch"></span>베이스</button>
+        <button class="toggle on" data-scen="lower"><span class="swatch"></span>하방</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap">
+      <svg class="chart-svg" id="chart-svg" viewBox="0 0 1200 540" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <div class="chart-caption">
+      <strong>출처</strong> · 국토부 정비사업 / 서울경제·뉴시티데일리·디벨로퍼뉴스·한국경제 / KB부동산 인근 신축 시세 / 한국부동산원 입주물량 전망 ·
+      <strong>단위</strong> 억원 · <strong>기준</strong> 전용 84㎡ ·
+      <strong>작성</strong> 2026.05.13
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 04 시나리오 카드 -->
+<section class="block shell" id="scenarios">
+  <div class="section-head reveal">
+    <div class="section-num">04</div>
+    <div>
+      <h2>시나리오 <em>요약</em></h2>
+      <p class="sub">한국 부동산 시장의 핵심 변수(금리·정책·공급·정비사업 일정)를 결합한 세 갈래.
+        실현 가능성은 베이스 > 상방 ≈ 하방 순.</p>
+    </div>
+  </div>
+
+  <div class="scen-grid">
+    <article class="scen-card upper reveal" data-d="1">
+      <div class="scen-tag">상방 · upper</div>
+      <div class="scen-name"><em>가속 인하 + 한강벨트 강세</em></div>
+      <p class="scen-thesis">
+        금리 인하 가속, 서울 공급 절벽 심화, 한강벨트 신고가 행진 지속.
+        일반분양가 평당 6,500만원 이상으로 상향.
+      </p>
+      <div class="scen-end">
+        <span class="lbl">29 Q4</span>
+        <span class="big">44.0</span>
+        <span class="unit">억</span>
+      </div>
+      <div class="scen-range">
+        <div class="range-row"><span>2026 Q2 ~ Q4</span><span class="v">27.5 — 29.5</span></div>
+        <div class="range-row"><span>2027 Q1 ~ Q4</span><span class="v">30.5 — 34.2</span></div>
+        <div class="range-row"><span>2028 Q1 ~ Q4</span><span class="v">35.5 — 39.3</span></div>
+        <div class="range-row"><span>2029 Q1 ~ Q4</span><span class="v">40.5 — 44.0</span></div>
+      </div>
+    </article>
+
+    <article class="scen-card base reveal" data-d="2">
+      <div class="scen-tag">베이스 · base</div>
+      <div class="scen-name"><em>점진 회복 + 일정 정상</em></div>
+      <p class="scen-thesis">
+        한강벨트 신축 선호 지속, 금리 점진 인하, 흑석 9구역 일정 큰 차질 없이 진행.
+        가장 가능성 높은 경로.
+      </p>
+      <div class="scen-end">
+        <span class="lbl">29 Q4</span>
+        <span class="big">36.5</span>
+        <span class="unit">억</span>
+      </div>
+      <div class="scen-range">
+        <div class="range-row"><span>2026 Q2 ~ Q4</span><span class="v">25.5 — 27.0</span></div>
+        <div class="range-row"><span>2027 Q1 ~ Q4</span><span class="v">27.8 — 30.5</span></div>
+        <div class="range-row"><span>2028 Q1 ~ Q4</span><span class="v">31.2 — 33.5</span></div>
+        <div class="range-row"><span>2029 Q1 ~ Q4</span><span class="v">34.2 — 36.5</span></div>
+      </div>
+    </article>
+
+    <article class="scen-card lower reveal" data-d="3">
+      <div class="scen-tag">하방 · lower</div>
+      <div class="scen-name"><em>금리 동결·규제 강화</em></div>
+      <p class="scen-thesis">
+        금리 동결 장기화 또는 재상승, 규제 강화, 거시 충격.
+        일반분양가가 평당 5,500만원 수준으로 하향.
+      </p>
+      <div class="scen-end">
+        <span class="lbl">29 Q4</span>
+        <span class="big">31.5</span>
+        <span class="unit">억</span>
+      </div>
+      <div class="scen-range">
+        <div class="range-row"><span>2026 Q2 ~ Q4</span><span class="v">23.0 — 24.5</span></div>
+        <div class="range-row"><span>2027 Q1 ~ Q4</span><span class="v">25.2 — 27.2</span></div>
+        <div class="range-row"><span>2028 Q1 ~ Q4</span><span class="v">27.8 — 29.3</span></div>
+        <div class="range-row"><span>2029 Q1 ~ Q4</span><span class="v">30.0 — 31.5</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ 05 리스크 -->
+<section class="block shell" id="risks">
+  <div class="section-head reveal">
+    <div class="section-num">05</div>
+    <div>
+      <h2>핵심 <em>리스크</em></h2>
+      <p class="sub">베이스 시나리오를 깨뜨릴 수 있는 다섯 가지 변수. 가격 자체보다 이 변수의 변화 신호를
+        먼저 추적하는 편이 안전하다.</p>
+    </div>
+  </div>
+
+  <div class="risk-grid">
+    <div class="risk-card reveal" data-d="1">
+      <div class="risk-num">01</div>
+      <div>
+        <div class="risk-title">정비사업 일정 지연</div>
+        <div class="risk-desc">정비사업은 1~2년 지연이 흔하다. 입주가 2031년 이후로 미뤄지면 분양권의 시간가치가 압축되며, 베이스 라인이 우측으로 평행이동한다.</div>
+      </div>
+    </div>
+
+    <div class="risk-card reveal" data-d="2">
+      <div class="risk-num">02</div>
+      <div>
+        <div class="risk-title">HUG · 분양가 상한제</div>
+        <div class="risk-desc">실제 일반분양가가 예상 20억보다 낮게 책정되면 진입가는 내려가지만, 분양권 프리미엄 폭이 커진다. 무주택 청약의 메리트도 변동.</div>
+      </div>
+    </div>
+
+    <div class="risk-card reveal" data-d="3">
+      <div class="risk-num">03</div>
+      <div>
+        <div class="risk-title">금리 사이클 반전</div>
+        <div class="risk-desc">베이스의 점진 인하 전제가 깨지면 즉시 하방 시나리오로 이동할 가능성. 한강벨트도 거시 영향에서 완전히 자유롭지 않다.</div>
+      </div>
+    </div>
+
+    <div class="risk-card reveal" data-d="4">
+      <div class="risk-num">04</div>
+      <div>
+        <div class="risk-title">재초환·세제 변경</div>
+        <div class="risk-desc">재건축초과이익환수제, 양도세·보유세 변경은 조합원·분양권 매수자의 손익 구조를 직접 바꾼다. 정책 발표 시점이 단기 변동성을 키운다.</div>
+      </div>
+    </div>
+
+    <div class="risk-card reveal" data-d="5">
+      <div class="risk-num">05</div>
+      <div>
+        <div class="risk-title">거시 충격</div>
+        <div class="risk-desc">글로벌 경기 침체, 국내 가계부채 충격, 외환 변동성 등 예측 불가능한 외생 변수. 한강벨트라도 거래 절벽으로 수렴할 수 있다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 06 출처 + 한계 -->
+<section class="block shell" id="sources">
+  <div class="section-head reveal">
+    <div class="section-num">06</div>
+    <div>
+      <h2><em>출처</em> · 한계</h2>
+      <p class="sub">본 자료는 공공 데이터와 보도자료의 통합 정리이며, 단정적 시세 전망이 아니다.
+        의사결정의 출발점으로만 활용하길 권장.</p>
+    </div>
+  </div>
+
+  <div class="footer-grid">
+    <div class="reveal" data-d="1">
+      <div class="src-head">References</div>
+      <ol class="src-list">
+        <li>
+          <span class="src-num">01</span>
+          <a href="https://www.newcitydaily.com/news/articleView.html?idxno=374" target="_blank" rel="noopener">흑석 9구역, 디에이치 켄트로나인 변경·입주권 시세 — 뉴시티데일리</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">02</span>
+          <a href="https://www.sedaily.com/NewsView/2GVG5NGA6X" target="_blank" rel="noopener">흑석 9구역·11구역 착공 — 입주권 프리미엄 16~18억 (서울경제)</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">03</span>
+          <a href="https://www.dpnews.co.kr/news/articleView.html?idxno=972" target="_blank" rel="noopener">흑석 9구역 설계 확정·일반분양 기대 (디벨로퍼뉴스)</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">04</span>
+          <a href="https://www.hankyung.com/realestate/article/2022051217521" target="_blank" rel="noopener">흑석 9구역 주민 이주·분양 일정 (한국경제)</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">05</span>
+          <a href="https://namu.wiki/w/%ED%9D%91%EC%84%9D%EB%89%B4%ED%83%80%EC%9A%B4" target="_blank" rel="noopener">흑석뉴타운 종합 (나무위키)</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">06</span>
+          <a href="https://kbland.kr/se/c/33803" target="_blank" rel="noopener">아크로리버하임 KB시세 · 실거래</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">07</span>
+          <a href="https://www.etoday.co.kr/news/view/2556603" target="_blank" rel="noopener">동작구 최고가 거래 — 아크로리버하임 26억·흑석자이 25억 (이투데이)</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li>
+          <span class="src-num">08</span>
+          <a href="https://investoryinsights.nugungasomeone.com/entry/2026-%EB%B6%80%EB%8F%99%EC%82%B0-%EC%8B%9C%EC%9E%A5-%EC%A0%84%EB%A7%9D-%E2%80%94-%EC%84%9C%EC%9A%B8-%EC%95%84%ED%8C%8C%ED%8A%B8-%EA%B0%80%EA%B2%A9-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EC%98%A4%EB%A5%B4%EB%82%98" target="_blank" rel="noopener">2026 부동산 시장 전망 — 서울 아파트 가격 (Investory)</a>
+          <span class="arrow">↗</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="limits reveal" data-d="2">
+      <div class="l-head">한계 · Disclaimer</div>
+      <p>본 추정은 4년치 미래 시세 예측으로, 본질적으로 <em>추측</em>이다. 단정적 가격이 아니며 의사결정의 출발점이다.</p>
+      <p>입주권·분양권은 거래 빈도가 낮아 변동성이 크고, 정비사업 단계에 따라 가격 결정 메커니즘이 단계별로 다르다.</p>
+      <p>한국부동산원·KB의 동 단위 가격지수는 흑석동 단독 데이터가 없어 동작구 평균으로 <em>대리지표</em>를 사용했다.</p>
+      <p>본 자료는 매수·매도·투자 권유가 아니며, 모든 의사결정의 책임은 사용자에게 있다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer class="shell">
+  <div class="footer-inner">
+    <div class="foot-brand">Heukseok IX</div>
+    <div class="foot-meta">
+      Premium Real Estate Intelligence<br>
+      작성 · 2026.05.13 · 단위 억원 · 전용 84㎡<br>
+      For informational use · not financial advice
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+ *  배경 캔버스 — 도시 불빛 파티클
+ * ============================================================ */
+(function bg(){
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let DPR = Math.min(window.devicePixelRatio || 1, 2);
+  let particles = [];
+
+  const PALETTE = [
+    [201, 169, 97],
+    [217, 176, 107],
+    [155, 185, 210],
+    [107, 146, 176],
+    [235, 217, 168],
+  ];
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = innerWidth * DPR;
+    canvas.height = innerHeight * DPR;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const target = Math.min(120, Math.round(innerWidth * innerHeight / 18000));
+    if (particles.length !== target) {
+      particles = Array.from({length: target}, () => spawn());
+    }
+  }
+  function spawn(){
+    const color = PALETTE[Math.floor(Math.random()*PALETTE.length)];
+    return {
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 1.4 + 0.25,
+      vx: (Math.random() - 0.5) * 0.08,
+      vy: (Math.random() - 0.5) * 0.08,
+      a: Math.random() * 0.5 + 0.15,
+      phase: Math.random() * Math.PI * 2,
+      pulse: 0.6 + Math.random() * 0.8,
+      color,
+    };
+  }
+  function frame(t){
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (const p of particles){
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < -10) p.x = innerWidth + 10;
+      if (p.x > innerWidth + 10) p.x = -10;
+      if (p.y < -10) p.y = innerHeight + 10;
+      if (p.y > innerHeight + 10) p.y = -10;
+
+      const flick = 0.5 + 0.5 * Math.sin(t * 0.0009 * p.pulse + p.phase);
+      const alpha = p.a * (0.35 + 0.65 * flick);
+      const r = p.r * (1 + 0.25 * flick);
+      const [cr, cg, cb] = p.color;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${cr},${cg},${cb},${alpha})`;
+      ctx.shadowBlur = r * 6;
+      ctx.shadowColor = `rgba(${cr},${cg},${cb},${alpha * 0.85})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  resize();
+  addEventListener('resize', resize, { passive: true });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    requestAnimationFrame(frame);
+  }
+})();
+
+/* ============================================================
+ *  Reveal — 스크롤 페이드 인
+ * ============================================================ */
+(function reveal(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+ *  카운트업 숫자
+ * ============================================================ */
+(function counters(){
+  const els = document.querySelectorAll('[data-count]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseFloat(el.dataset.count);
+        const dur = 1400;
+        const start = performance.now();
+        function step(t){
+          const p = Math.min(1, (t - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const v = target * eased;
+          el.textContent = v.toFixed(1);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target.toFixed(1);
+        }
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+ *  차트 — SVG 인터랙티브
+ * ============================================================ */
+(function chart(){
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const data = {
+    quarters: ['26 Q2','26 Q3','26 Q4','27 Q1','27 Q2','27 Q3','27 Q4','28 Q1','28 Q2','28 Q3','28 Q4','29 Q1','29 Q2','29 Q3','29 Q4'],
+    phases: ['입주권','입주권','입주권','입주권','분양·분양권','분양권','분양권','분양권','분양권','분양권','분양권','분양권','분양권','입주·신축','신축'],
+    base:  [25.5,26.2,27.0,27.8,28.5,29.5,30.5,31.2,32.0,32.8,33.5,34.2,35.0,35.7,36.5],
+    upper: [27.5,28.5,29.5,30.5,31.8,33.0,34.2,35.5,36.8,38.0,39.3,40.5,41.8,43.0,44.0],
+    lower: [23.0,23.8,24.5,25.2,25.8,26.5,27.2,27.8,28.3,28.8,29.3,30.0,30.5,31.0,31.5],
+  };
+
+  const SCEN = [
+    { key: 'lower', color: 'var(--scen-lower)', dash: '4 4', width: 1.6 },
+    { key: 'base',  color: 'var(--scen-base)',  dash: '0',   width: 2.4 },
+    { key: 'upper', color: 'var(--scen-upper)', dash: '4 4', width: 1.6 },
+  ];
+
+  const W = 1200, H = 540;
+  const M = { top: 56, right: 70, bottom: 80, left: 70 };
+  const innerW = W - M.left - M.right;
+  const innerH = H - M.top - M.bottom;
+  const yMin = 20, yMax = 46;
+  const xStep = innerW / (data.quarters.length - 1);
+
+  const xPos = i => M.left + i * xStep;
+  const yPos = v => M.top + innerH * (1 - (v - yMin) / (yMax - yMin));
+
+  const svg = document.getElementById('chart-svg');
+  if (!svg) return;
+  const tooltip = document.getElementById('tooltip');
+  const wrap = document.getElementById('chart-wrap');
+
+  // Stage backgrounds: 입주권 (0~3), 분양권 (4~12), 신축 (13~14)
+  const stages = [
+    { from: 0,  to: 4,  label: '입주권 거래',   cls: 'stage-1' },
+    { from: 4,  to: 13, label: '분양·분양권 거래', cls: 'stage-2' },
+    { from: 13, to: 15, label: '신축 거래',     cls: 'stage-3' },
+  ];
+  const stageG = document.createElementNS(SVG_NS, 'g');
+  stageG.setAttribute('class', 'chart-stage-bg');
+  stages.forEach(s => {
+    const x1 = xPos(s.from) - xStep/2;
+    const x2 = xPos(s.to - 1) + xStep/2;
+    if (s.from === 0) {
+      // shift left edge
+    }
+    const rect = document.createElementNS(SVG_NS, 'rect');
+    const xLeft = Math.max(M.left, x1);
+    const xRight = Math.min(M.left + innerW, x2);
+    rect.setAttribute('x', xLeft);
+    rect.setAttribute('y', M.top);
+    rect.setAttribute('width', xRight - xLeft);
+    rect.setAttribute('height', innerH);
+    rect.setAttribute('class', s.cls);
+    stageG.appendChild(rect);
+
+    const t = document.createElementNS(SVG_NS, 'text');
+    t.setAttribute('x', (xLeft + xRight) / 2);
+    t.setAttribute('y', M.top + 18);
+    t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('fill', 'var(--ink-mute)');
+    t.setAttribute('class', '');
+    t.style.opacity = '0.6';
+    t.textContent = s.label;
+    stageG.appendChild(t);
+  });
+  svg.appendChild(stageG);
+
+  // y grid + labels
+  const grid = document.createElementNS(SVG_NS, 'g');
+  grid.setAttribute('class', 'chart-grid');
+  const yTicks = [20, 24, 28, 32, 36, 40, 44];
+  yTicks.forEach(v => {
+    const y = yPos(v);
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', M.left);
+    line.setAttribute('x2', M.left + innerW);
+    line.setAttribute('y1', y);
+    line.setAttribute('y2', y);
+    grid.appendChild(line);
+    const text = document.createElementNS(SVG_NS, 'text');
+    text.setAttribute('x', M.left - 14);
+    text.setAttribute('y', y + 3);
+    text.setAttribute('text-anchor', 'end');
+    text.textContent = v;
+    grid.appendChild(text);
+  });
+  // y-axis label
+  const yLabel = document.createElementNS(SVG_NS, 'text');
+  yLabel.setAttribute('x', M.left - 14);
+  yLabel.setAttribute('y', M.top - 18);
+  yLabel.setAttribute('text-anchor', 'end');
+  yLabel.textContent = '억원';
+  grid.appendChild(yLabel);
+
+  // x labels
+  data.quarters.forEach((q, i) => {
+    const x = xPos(i);
+    const text = document.createElementNS(SVG_NS, 'text');
+    text.setAttribute('x', x);
+    text.setAttribute('y', M.top + innerH + 24);
+    text.setAttribute('text-anchor', 'middle');
+    text.textContent = q;
+    grid.appendChild(text);
+  });
+  // x axis line
+  const axisX = document.createElementNS(SVG_NS, 'line');
+  axisX.setAttribute('x1', M.left);
+  axisX.setAttribute('x2', M.left + innerW);
+  axisX.setAttribute('y1', M.top + innerH);
+  axisX.setAttribute('y2', M.top + innerH);
+  axisX.setAttribute('class', 'axis');
+  grid.appendChild(axisX);
+  svg.appendChild(grid);
+
+  // Reference line ~ 25억 (인근 신축 비교)
+  const refY = yPos(25);
+  const refG = document.createElementNS(SVG_NS, 'g');
+  refG.setAttribute('class', 'ref-line');
+  const refLine = document.createElementNS(SVG_NS, 'line');
+  refLine.setAttribute('x1', M.left);
+  refLine.setAttribute('x2', M.left + innerW);
+  refLine.setAttribute('y1', refY);
+  refLine.setAttribute('y2', refY);
+  refG.appendChild(refLine);
+  const refText = document.createElementNS(SVG_NS, 'text');
+  refText.setAttribute('x', M.left + 8);
+  refText.setAttribute('y', refY - 6);
+  refText.textContent = '인근 신축 84㎡ 참고선 · ≈ 25억 (아크로리버하임·흑석자이, 2025—2026)';
+  refG.appendChild(refText);
+  svg.appendChild(refG);
+
+  // Range area (upper - lower)
+  const areaPath = document.createElementNS(SVG_NS, 'path');
+  let d = '';
+  data.upper.forEach((v, i) => { d += (i === 0 ? 'M' : 'L') + xPos(i) + ',' + yPos(v); });
+  for (let i = data.lower.length - 1; i >= 0; i--) {
+    d += 'L' + xPos(i) + ',' + yPos(data.lower[i]);
+  }
+  d += 'Z';
+  areaPath.setAttribute('d', d);
+  areaPath.setAttribute('class', 'range-area');
+  areaPath.id = 'range-area';
+  svg.appendChild(areaPath);
+
+  // Milestone lines
+  function addMilestone(idx, cls, label){
+    const x = xPos(idx);
+    const g = document.createElementNS(SVG_NS, 'g');
+    g.setAttribute('class', 'milestone-line ' + cls);
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', x);
+    line.setAttribute('x2', x);
+    line.setAttribute('y1', M.top + 30);
+    line.setAttribute('y2', M.top + innerH);
+    g.appendChild(line);
+    const text = document.createElementNS(SVG_NS, 'text');
+    text.setAttribute('x', x + 8);
+    text.setAttribute('y', M.top + innerH - 12);
+    text.textContent = label;
+    g.appendChild(text);
+    svg.appendChild(g);
+  }
+  addMilestone(4, 'sale', '2027 일반분양');
+  addMilestone(13, 'move', '2029 H2 입주');
+
+  // Lines
+  const lines = {};
+  SCEN.forEach(s => {
+    const path = document.createElementNS(SVG_NS, 'path');
+    let p = '';
+    data[s.key].forEach((v, i) => { p += (i === 0 ? 'M' : 'L') + xPos(i) + ',' + yPos(v); });
+    path.setAttribute('d', p);
+    path.setAttribute('class', 'line ' + s.key + ' draw');
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = s.dash !== '0' ? s.dash : len;
+    path.style.setProperty('--len', len);
+    if (s.dash !== '0') {
+      path.style.strokeDashoffset = 0;
+      path.classList.remove('draw');
+      // Animate via mask: not necessary for dashed, just draw
+    }
+    svg.appendChild(path);
+    lines[s.key] = path;
+  });
+
+  // Points
+  const pointsG = document.createElementNS(SVG_NS, 'g');
+  pointsG.setAttribute('class', 'points');
+  const pointEls = { upper: [], base: [], lower: [] };
+  ['upper','base','lower'].forEach(k => {
+    data[k].forEach((v, i) => {
+      const c = document.createElementNS(SVG_NS, 'circle');
+      c.setAttribute('cx', xPos(i));
+      c.setAttribute('cy', yPos(v));
+      c.setAttribute('r', 3.5);
+      c.setAttribute('class', k);
+      pointsG.appendChild(c);
+      pointEls[k].push(c);
+    });
+  });
+  svg.appendChild(pointsG);
+
+  // Hover guide
+  const guide = document.createElementNS(SVG_NS, 'line');
+  guide.setAttribute('class', 'hover-guide');
+  guide.setAttribute('y1', M.top);
+  guide.setAttribute('y2', M.top + innerH);
+  svg.appendChild(guide);
+
+  // Overlay for mouse
+  const overlay = document.createElementNS(SVG_NS, 'rect');
+  overlay.setAttribute('x', M.left);
+  overlay.setAttribute('y', M.top);
+  overlay.setAttribute('width', innerW);
+  overlay.setAttribute('height', innerH);
+  overlay.setAttribute('fill', 'transparent');
+  svg.appendChild(overlay);
+
+  function findIndex(svgX){
+    return Math.max(0, Math.min(data.quarters.length - 1, Math.round((svgX - M.left) / xStep)));
+  }
+  function clearActive(){
+    ['upper','base','lower'].forEach(k => pointEls[k].forEach(c => c.classList.remove('is-active')));
+  }
+  function showTooltip(i, clientX, clientY){
+    clearActive();
+    const visible = getVisible();
+    visible.forEach(k => pointEls[k][i].classList.add('is-active'));
+
+    const x = xPos(i);
+    guide.setAttribute('x1', x);
+    guide.setAttribute('x2', x);
+    guide.classList.add('show');
+
+    const rows = visible.map(k => {
+      const label = ({upper:'상방',base:'베이스',lower:'하방'})[k];
+      return `<div class="tip-row"><span class="label ${k}"><span class="swatch"></span>${label}</span><span class="val">${data[k][i].toFixed(1)}<span class="unit">억</span></span></div>`;
+    }).join('');
+
+    tooltip.innerHTML = `
+      <div class="tip-quarter">${data.quarters[i]}</div>
+      <div class="tip-phase">${data.phases[i]} 단계</div>
+      ${rows}
+    `;
+
+    const wrapRect = wrap.getBoundingClientRect();
+    const svgRect = svg.getBoundingClientRect();
+    const scale = svgRect.width / W;
+    const tooltipX = (x * scale) + (svgRect.left - wrapRect.left);
+    const baseV = data.base[i];
+    const tooltipY = (yPos(baseV) * scale) + (svgRect.top - wrapRect.top);
+    tooltip.style.left = tooltipX + 'px';
+    tooltip.style.top = tooltipY + 'px';
+    tooltip.classList.add('show');
+  }
+  function hideTooltip(){
+    clearActive();
+    guide.classList.remove('show');
+    tooltip.classList.remove('show');
+  }
+  function getVisible(){
+    return SCEN.map(s => s.key).filter(k => !document.querySelector(`.toggle[data-scen="${k}"]`).classList.contains('off'));
+  }
+
+  overlay.addEventListener('mousemove', (e) => {
+    const r = svg.getBoundingClientRect();
+    const svgX = (e.clientX - r.left) * (W / r.width);
+    const i = findIndex(svgX);
+    showTooltip(i, e.clientX, e.clientY);
+  });
+  overlay.addEventListener('mouseleave', hideTooltip);
+  // Touch
+  overlay.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const r = svg.getBoundingClientRect();
+    const svgX = (touch.clientX - r.left) * (W / r.width);
+    const i = findIndex(svgX);
+    showTooltip(i, touch.clientX, touch.clientY);
+  }, { passive: true });
+  overlay.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const r = svg.getBoundingClientRect();
+    const svgX = (touch.clientX - r.left) * (W / r.width);
+    const i = findIndex(svgX);
+    showTooltip(i, touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  // Toggles
+  const toggles = document.querySelectorAll('.toggle');
+  function applyToggles(){
+    ['upper','base','lower'].forEach(k => {
+      const btn = document.querySelector(`.toggle[data-scen="${k}"]`);
+      const isOn = btn.classList.contains('on');
+      lines[k].style.display = isOn ? '' : 'none';
+      pointEls[k].forEach(c => c.style.display = isOn ? '' : 'none');
+    });
+    // Range area visible only when both upper and lower are on
+    const upperOn = document.querySelector('.toggle[data-scen="upper"]').classList.contains('on');
+    const lowerOn = document.querySelector('.toggle[data-scen="lower"]').classList.contains('on');
+    document.getElementById('range-area').style.display = (upperOn && lowerOn) ? '' : 'none';
+  }
+  toggles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('on');
+      btn.classList.toggle('off', !btn.classList.contains('on'));
+      applyToggles();
+    });
+  });
+
+  // Milestone click → highlight on chart
+  document.querySelectorAll('.milestone').forEach(m => {
+    m.addEventListener('click', () => {
+      const i = parseInt(m.dataset.q, 10);
+      const r = svg.getBoundingClientRect();
+      // synthetic position for tooltip
+      const x = xPos(i);
+      const scale = r.width / W;
+      const ev = { clientX: r.left + x * scale, clientY: r.top + yPos(data.base[i]) * scale };
+      showTooltip(i, ev.clientX, ev.clientY);
+      // scroll chart into view
+      document.getElementById('chart').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+})();
+
+/* ============================================================
+ *  Smooth scroll for anchor links (if added later)
+ * ============================================================ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+
+</body>
+</html>
